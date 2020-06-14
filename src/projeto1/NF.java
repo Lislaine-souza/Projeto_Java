@@ -1,12 +1,15 @@
 
 package projeto1;
 
+import java.util.Date;
+
 
 public class NF {
     int id_nota;
     int id_cliente;
     float valor_total;
     float valor_frete;
+    Date data;
     
     
     public int getId() {
@@ -41,9 +44,18 @@ public class NF {
         this.valor_frete = valor_frete;
     }
     
+    public Date getData() {
+        return data;
+    }
+
+    public void setDate (Date data) {
+        this.data = data;
+    }
+    
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id_nota + "id_cliente=" + id_cliente + "valor_frete="+ Float.toString(valor_frete) + "valor_total=" + Float.toString(valor_total)+"}";   
+        return "Cliente{" + "id=" + id_nota + "id_cliente=" + id_cliente + "valor_frete="+ Float.toString(valor_frete) + 
+                        "valor_total=" + Float.toString(valor_total)+ "Data=" + data + "}";   
 }
     
 }

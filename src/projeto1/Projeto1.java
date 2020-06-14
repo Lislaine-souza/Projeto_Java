@@ -8,14 +8,18 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
+
 
 
 public class Projeto1 {
    
 
    
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ParseException {
         
    
          try (Connection conexao = new FabricaConexao().estabeleceConexao()) {
@@ -112,7 +116,9 @@ public class Projeto1 {
        DAO.adicionar(produto);
     }
    
- public static void cadastrar_NF() throws SQLException{
+ public static void cadastrar_NF() throws SQLException, ParseException{
+     
+    
       System.out.println("Cadastrando nota fiscal: " ); 
         NFDao DAO = new NFDao();
         Scanner scan = new Scanner (System.in);
@@ -120,6 +126,7 @@ public class Projeto1 {
         int id_cliente;
         float valor_total;
         float valor_frete;
+        String s_data;
                 
         System.out.print("Digite um número idendificador: " );
         id_nota = scan.nextInt();
@@ -129,6 +136,11 @@ public class Projeto1 {
         valor_total = scan.nextInt();
         System.out.print("Digite o valor do frete: " );
         valor_frete = scan.nextInt();
+        System.out.print("Digite a data: dd/mm/aaaa ");
+        s_data = scan.next();
+       
+        
+        
         
         NF nf = new NF();
         
@@ -136,6 +148,7 @@ public class Projeto1 {
         nf.setId_Cliente(id_cliente);
         nf.setValor_total(valor_total);
         nf.setValor_frete(valor_frete);
+        
         
         
        DAO.adicionar(nf);
