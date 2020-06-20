@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 
 
@@ -126,8 +127,10 @@ public class Projeto1 {
         int id_cliente;
         float valor_total;
         float valor_frete;
-        String s_data;
-                
+        //String s_data;
+        LocalDate dataAtual = LocalDate.now();
+
+        
         System.out.print("Digite um número idendificador: " );
         id_nota = scan.nextInt();
         System.out.print("Digite o numero identificador do cliente: " );
@@ -136,8 +139,8 @@ public class Projeto1 {
         valor_total = scan.nextInt();
         System.out.print("Digite o valor do frete: " );
         valor_frete = scan.nextInt();
-        System.out.print("Digite a data: dd/mm/aaaa ");
-        s_data = scan.next();
+       // System.out.print("Digite a data: dd/mm/aaaa ");
+      //  s_data = scan.next();
        
         
         
@@ -148,6 +151,7 @@ public class Projeto1 {
         nf.setId_Cliente(id_cliente);
         nf.setValor_total(valor_total);
         nf.setValor_frete(valor_frete);
+        nf.setDate(dataAtual);
         
         
         
