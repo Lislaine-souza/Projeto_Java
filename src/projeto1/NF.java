@@ -3,6 +3,7 @@ package projeto1;
 
 import java.util.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class NF {
     int id_nota;
@@ -10,6 +11,7 @@ public class NF {
     float valor_total;
     float valor_frete;
     LocalDate data;
+    LocalTime hora;
     
     
     public int getId() {
@@ -52,10 +54,18 @@ public class NF {
         this.data = data;
     }
     
+    public LocalTime getTime() {
+        return hora;
+    }
+
+    public void setTime (LocalTime hora) {
+        this.hora = hora;
+    }
+    
     @Override
     public String toString() {
         return "Cliente{" + "id=" + id_nota + "id_cliente=" + id_cliente + "valor_frete="+ Float.toString(valor_frete) + 
-                        "valor_total=" + Float.toString(valor_total)+ "Data=" + data + "}";   
+                        "valor_total=" + Float.toString(valor_total)+ "Data=" + data + "hora=" + hora +"}";   
 }
     
 }

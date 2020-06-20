@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-
+import java.time.LocalTime;
 
 
 public class Projeto1 {
@@ -129,6 +129,7 @@ public class Projeto1 {
         float valor_frete;
         //String s_data;
         LocalDate dataAtual = LocalDate.now();
+        LocalTime horaAtual = LocalTime.now();
 
         
         System.out.print("Digite um número idendificador: " );
@@ -152,6 +153,7 @@ public class Projeto1 {
         nf.setValor_total(valor_total);
         nf.setValor_frete(valor_frete);
         nf.setDate(dataAtual);
+        nf.setTime(horaAtual);
         
         
         
