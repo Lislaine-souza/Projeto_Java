@@ -2,14 +2,14 @@
 package projeto1;
 
 import java.util.Date;
-
+import java.time.LocalDate;
 
 public class NF {
     int id_nota;
     int id_cliente;
     float valor_total;
     float valor_frete;
-    Date data;
+    LocalDate data;
     
     
     public int getId() {
@@ -44,11 +44,11 @@ public class NF {
         this.valor_frete = valor_frete;
     }
     
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setDate (Date data) {
+    public void setDate (LocalDate data) {
         this.data = data;
     }
     

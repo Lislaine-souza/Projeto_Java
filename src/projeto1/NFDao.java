@@ -31,17 +31,9 @@ public class NFDao implements FuncoesNFDAO {
         ps.setInt(2,nf.getId_Cliente());
         ps.setFloat(3,nf.getValor_total());
         ps.setFloat(4,nf.getValor_frete());
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        df.setLenient (false); 
-        Date dt = null;
-        try {
-           dt = (Date) df.parse ("01/01/2006");
-        } catch (ParseException ex) {
-            Logger.getLogger(NFDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-               
-        ps.setDate(5, dt);
-       // ps.setDate(5, (Date) nf.getData());
+        ps.setObject(5, nf.getData());
+        
+        
         ps.execute();
         ps.close();
         conexao.close();        
