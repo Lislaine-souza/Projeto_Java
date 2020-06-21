@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,5 +39,26 @@ public class NFDao implements FuncoesNFDAO {
         ps.execute();
         ps.close();
         conexao.close();        
+    }
+    public void imprimir() throws SQLException{
+        this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
+        String sql = "SELECT * FROM NF";
+        PreparedStatement ps = this.conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+       while(rs.next()){
+            int id = rs.getInt("id_nota");
+            Float valor_total = rs.getFloat("valor_total");
+            Float valor_frete = rs.getFloat("valor_frete");
+            int id_cli = rs.getInt("id_cliente");
+            Date data = rs.getDate("data");
+            Time hora = rs.getTime("hora");
+            
+                System.out.println(" Id_nota: " + id + " Valor_total: " + valor_total + " Valor_frete: " + valor_frete + 
+                        " Id_cliente: " + id_cli + " Data: " + data + " Hora: " + hora);
+        }
+        ps.close();
+        rs.close();
+        conexao.close(); 
     }
 }

@@ -44,4 +44,6 @@ package projeto1;
     public String toString() {
         return "Cliente{" + "id=" + id_produto + "nome produto" + Nome_produto + "valor_un=" + Float.toString(valor_un) + "qtde_estoque=" + qtde_estoque +"}";   
 }
+    
+    
 }

@@ -3,9 +3,11 @@ package projeto1;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class NF_produtoDao implements Funcao_NF_produtoDao {
@@ -28,7 +30,26 @@ public class NF_produtoDao implements Funcao_NF_produtoDao {
         ps.close();
         conexao.close();        
     }
-    
+    public void imprimir() throws SQLException{
+        this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
+        String sql = "SELECT * FROM NF_PRODUTO";
+        PreparedStatement ps = this.conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+       while(rs.next()){
+            int id = rs.getInt("id_nf_produto");
+            int id_nota = rs.getInt("id_nota");
+            int id_produto = rs.getInt("id_produto");
+            int qtdade_vendida = rs.getInt("qtde_vendida");
+            
+            
+                System.out.println(" Id_nf_produto: " + id + " id_nota: " + id_nota + " id_produto: " + id_produto + 
+                        " Quantidade_vendida: " + qtdade_vendida );
+        }
+        ps.close();
+        rs.close();
+        conexao.close(); 
+    }
     
     
 }

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 public interface FuncoesClienteDAO {
     public void adicionar (Cliente cliente) throws SQLException;
+    public void imprimir () throws SQLException;
+    public void excluir (Cliente cliente) throws SQLException;
+    
     /*public ArrayList<Cliente> retornaLista() throws SQLException;
     public void imprimeBD() throws SQLException;
     public void getMetaDados() throws SQLException;

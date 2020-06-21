@@ -20,7 +20,7 @@ public class Projeto1 {
    
 
    
-    public static void main(String[] args) throws SQLException, ParseException {
+ public static void main(String[] args) throws SQLException, ParseException {
         
    
          try (Connection conexao = new FabricaConexao().estabeleceConexao()) {
@@ -33,11 +33,20 @@ public class Projeto1 {
             System.out.println("Banco usado: " + bancoNome);
             System.out.println("Driver usado: " + dadosBanco.getDriverName());
             
-            System.out.println("OLÁ!ESCOLHA UMA DAS FUNÇÕES: ");  
+            System.out.println("CADASTRAR");  
             System.out.println("[1]Cadastrar cliente");
             System.out.println("[2]Cadastrar produto");
+            System.out.println("INCLUIR"); 
             System.out.println("[3]Lançar nota fiscal");
             System.out.println("[4]Lançar nota fiscal do produto");
+            System.out.println("MOSTRAR A LISTA DE: "); 
+            System.out.println("[5]PRODUTOS");
+            System.out.println("[6]NOTAS FISCAIS");
+            System.out.println("[7]NF PRODUTO");
+            System.out.println("[8]PESSOAS");
+            System.out.println("EXCLUIR");
+            System.out.println("[9]CADASTRO DE PESSOA"); 
+            
             
             i = scan.nextInt();
            
@@ -55,7 +64,26 @@ public class Projeto1 {
              cadastrar_NF_produto();
             
          }
-         
+         else if (i == 5){
+             Lista_produto();
+            
+         }
+         else if (i == 6){
+             Lista_NF();
+            
+         }
+          else if (i == 7){
+             Lista_NF_produto();
+            
+         }
+         else if (i == 8){
+             Lista_Cadastros();
+            
+         }
+         else if (i == 9){
+           //  Excluir_Cadastro();
+            
+         }
          }
     }
     
@@ -115,6 +143,7 @@ public class Projeto1 {
         
         
        DAO.adicionar(produto);
+      
     }
    
  public static void cadastrar_NF() throws SQLException, ParseException{
@@ -158,6 +187,7 @@ public class Projeto1 {
         
         
        DAO.adicionar(nf);
+       
     }
       
  public static void cadastrar_NF_produto() throws SQLException{
@@ -189,5 +219,37 @@ public class Projeto1 {
         
        DAO.adicionar(nf_produto);
     } 
-    
+ public static void Lista_Cadastros() throws SQLException {
+     System.out.println("Lista de cadastro de pessoas: " ); 
+     ClienteDao DAO = new ClienteDao();
+      
+      DAO.imprimir();
+ }
+ 
+ public static void Lista_produto() throws SQLException{
+      System.out.println("Imprimir Produtos: " ); 
+      ProdutoDao DAO = new ProdutoDao();
+      
+      DAO.imprimir();
+  }
+ public static void Lista_NF() throws SQLException {
+     System.out.println("Imprimir notas fiscais: " ); 
+      NFDao DAO = new NFDao();
+      
+      DAO.imprimir();
+ }
+ public static void Lista_NF_produto() throws SQLException {
+     System.out.println("Imprimir notas fiscais dos produtos: " ); 
+     NF_produtoDao DAO = new NF_produtoDao();
+      
+      DAO.imprimir();
+ }
+ public static void Excluir_Cadastro(Cliente cliente) throws SQLException{
+    System.out.println("Lista de cadastro de pessoas: " ); 
+     ClienteDao DAO = new ClienteDao();
+      DAO.imprimir(); 
+      //DAO.excluir();
+     
+ }   
 }
+
