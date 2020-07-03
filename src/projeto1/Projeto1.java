@@ -81,7 +81,7 @@ public class Projeto1 {
             
          }
          else if (i == 9){
-           //  Excluir_Cadastro();
+             Excluir_Cadastro();
             
          }
          }
@@ -248,8 +248,12 @@ public class Projeto1 {
     System.out.println("Lista de cadastro de pessoas: " ); 
      ClienteDao DAO = new ClienteDao();
       DAO.imprimir(); 
-      //DAO.excluir();
+      DAO.excluir(cliente);
      
  }   
+
+    private static void Excluir_Cadastro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
