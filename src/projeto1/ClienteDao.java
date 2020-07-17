@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
         
     public class ClienteDao implements FuncoesClienteDAO {
     //prepara para criar uma conexão com o BD
@@ -50,15 +51,22 @@ import java.util.ArrayList;
         rs.close();
         conexao.close(); 
     }
-    public void excluir(Cliente cliente) throws SQLException{
+   
+    public void excluir(int id) throws SQLException{
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
         String sql = "DELETE FROM CLIENTE WHERE ID=?";
         
         PreparedStatement ps = this.conexao.prepareStatement(sql);
-        ps.setInt(1, cliente.getId());
-        ps.execute();      
+        ps.setInt(1, id);
+        ps.execute();
+        JOptionPane.showMessageDialog(null, "Dados excluido com sucesso!");
         ps.close();
         conexao.close(); 
+    }
+
+    @Override
+    public void excluir(Cliente cliente) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

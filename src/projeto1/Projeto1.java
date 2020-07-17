@@ -24,7 +24,7 @@ public class Projeto1 {
         
    
          try (Connection conexao = new FabricaConexao().estabeleceConexao()) {
-         int i;    
+         int menu;    
              
             DatabaseMetaData dadosBanco = conexao.getMetaData();
             String bancoNome = dadosBanco.getDatabaseProductName();
@@ -46,44 +46,52 @@ public class Projeto1 {
             System.out.println("[8]PESSOAS");
             System.out.println("EXCLUIR");
             System.out.println("[9]CADASTRO DE PESSOA"); 
+            System.out.println("\n[0]SAIR"); 
             
-            
-            i = scan.nextInt();
+             menu = scan.nextInt();
+        scan.nextLine();
+        
+            switch (menu) {
+                case 1:
+                    cadastrar();
+                    break;
+                    
+                case 2:
+                    cadastrar_produto();
+                    break;
+                 
+                case 3:
+                    cadastrar_NF();
+                    break;
+                    
+                case 4:
+                    cadastrar_NF_produto();
+                    break;
+                    
+                case 5:
+                    Lista_produto();
+                    break;
+                    
+                case 6:
+                    Lista_NF();
+                    break;
+                
+                case 7:
+                    Lista_NF_produto();
+                    break;
+                
+                case 8:
+                    Lista_Cadastros();
+                    break;
+                
+                case 9:
+                    Excluir_Cadastro();
+                    break;
+                    
+                default:
+                    break;
+            }
            
-         if (i == 1){
-            cadastrar();  
-         } 
-         else if (i == 2){
-            cadastrar_produto();
-         }
-         else if (i == 3){
-             cadastrar_NF();
-            
-         }
-         else if (i == 4){
-             cadastrar_NF_produto();
-            
-         }
-         else if (i == 5){
-             Lista_produto();
-            
-         }
-         else if (i == 6){
-             Lista_NF();
-            
-         }
-          else if (i == 7){
-             Lista_NF_produto();
-            
-         }
-         else if (i == 8){
-             Lista_Cadastros();
-            
-         }
-         else if (i == 9){
-             Excluir_Cadastro();
-            
-         }
          }
     }
     
@@ -245,10 +253,14 @@ public class Projeto1 {
       DAO.imprimir();
  }
  public static void Excluir_Cadastro(Cliente cliente) throws SQLException{
+    Scanner scan = new Scanner(System.in);
     System.out.println("Lista de cadastro de pessoas: " ); 
-     ClienteDao DAO = new ClienteDao();
-      DAO.imprimir(); 
-      DAO.excluir(cliente);
+    ClienteDao DAO = new ClienteDao();
+    DAO.imprimir(); 
+    System.out.println("Digite o ID a ser excluído: ");
+    int id = scan.nextInt();
+    scan.nextLine();
+    DAO.excluir(id);
      
  }   
 
