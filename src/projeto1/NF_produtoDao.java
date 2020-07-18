@@ -19,12 +19,12 @@ public class NF_produtoDao implements Funcao_NF_produtoDao {
     public void adicionar (NF_produto nf_produto) throws SQLException {
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
         String sql = "INSERT INTO NF_PRODUTO " +
-                    "(id_nf_produto,id_nota,id_produto,qtde_vendida) " +
+                    "(idNfProduto,idNota,idproduto,qtdadeVendida) " +
                     "values (?,?,?,?)";        
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ps.setInt(1,nf_produto.getId());
-        ps.setInt(2,nf_produto.getId_nota());
-        ps.setInt(3,nf_produto.getId_produto());
+        ps.setInt(2,nf_produto.getidNota());
+        ps.setInt(3,nf_produto.getidproduto());
         ps.setInt(4,nf_produto.getQtde());
         ps.execute();
         ps.close();
@@ -37,13 +37,13 @@ public class NF_produtoDao implements Funcao_NF_produtoDao {
         ResultSet rs = ps.executeQuery();
         
        while(rs.next()){
-            int id = rs.getInt("id_nf_produto");
-            int id_nota = rs.getInt("id_nota");
-            int id_produto = rs.getInt("id_produto");
-            int qtdade_vendida = rs.getInt("qtde_vendida");
+            int id = rs.getInt("idNfProduto");
+            int idNota = rs.getInt("idNota");
+            int idproduto = rs.getInt("idproduto");
+            int qtdade_vendida = rs.getInt("qtdadeVendida");
             
             
-                System.out.println(" Id_nf_produto: " + id + " id_nota: " + id_nota + " id_produto: " + id_produto + 
+                System.out.println(" idNfProduto: " + id + " idNota: " + idNota + " idproduto: " + idproduto + 
                         " Quantidade_vendida: " + qtdade_vendida );
         }
         ps.close();

@@ -3,15 +3,9 @@ package projeto1;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -57,35 +51,35 @@ public class Projeto1 {
                     break;
                     
                 case 2:
-                    cadastrar_produto();
+                    cadastrarProduto();
                     break;
                  
                 case 3:
-                    cadastrar_NF();
+                    cadastrarNF();
                     break;
                     
                 case 4:
-                    cadastrar_NF_produto();
+                    cadastrarNFProduto();
                     break;
                     
                 case 5:
-                    Lista_produto();
+                    listaProduto();
                     break;
                     
                 case 6:
-                    Lista_NF();
+                    listaNF();
                     break;
                 
                 case 7:
-                    Lista_NF_produto();
+                    listaNFProduto();
                     break;
                 
                 case 8:
-                    Lista_Cadastros();
+                    listaCadastros();
                     break;
                 
                 case 9:
-                    Excluir_Cadastro();
+                    excluirCadastro();
                     break;
                     
                 default:
@@ -124,45 +118,45 @@ public class Projeto1 {
        DAO.adicionar(cliente);
     }
     
- public static void cadastrar_produto() throws SQLException{
+ public static void cadastrarProduto() throws SQLException{
         System.out.println("Cadastrando Produtos: " ); 
         ProdutoDao DAO = new ProdutoDao();
         Scanner scan = new Scanner (System.in);
         int id;
-        String Nome_produto;
-        float valor_un;
-        int qtde_estoque;
+        String nomeProduto;
+        float valorUn;
+        int qtdadeEstoque;
                 
         System.out.print("Digite um número idendificador:" );
         id = scan.nextInt();
         System.out.print("Digite o nome do produto:" );
-        Nome_produto = scan.next();
+        nomeProduto = scan.next();
         System.out.print("Digite o valor do produto:" );
-        valor_un = scan.nextFloat();
+        valorUn = scan.nextFloat();
         System.out.print("Digite a quantidade no estoque:" );
-        qtde_estoque = scan.nextInt();
+        qtdadeEstoque = scan.nextInt();
         
         Produto produto = new Produto();
         
         produto.setId(id);
-        produto.setNome_produto(Nome_produto);
-        produto.setValor_un(valor_un);
-        produto.setQtde_estoque(qtde_estoque);
+        produto.setnomeProduto(nomeProduto);
+        produto.setvalorUn(valorUn);
+        produto.setqtdadeEstoque(qtdadeEstoque);
         
         
        DAO.adicionar(produto);
       
     }
    
- public static void cadastrar_NF() throws SQLException, ParseException{
+ public static void cadastrarNF() throws SQLException, ParseException{
      
     
       System.out.println("Cadastrando nota fiscal: " ); 
         NFDao DAO = new NFDao();
         Scanner scan = new Scanner (System.in);
-        int id_nota;
-        int id_cliente;
-        float valor_total;
+        int idNota;
+        int idCliente;
+        float valorTotal;
         float valor_frete;
         //String s_data;
         LocalDate dataAtual = LocalDate.now();
@@ -170,11 +164,11 @@ public class Projeto1 {
 
         
         System.out.print("Digite um número idendificador: " );
-        id_nota = scan.nextInt();
+        idNota = scan.nextInt();
         System.out.print("Digite o numero identificador do cliente: " );
-        id_cliente = scan.nextInt();
+        idCliente = scan.nextInt();
         System.out.print("Digite o valor total da nota: " );
-        valor_total = scan.nextInt();
+        valorTotal = scan.nextInt();
         System.out.print("Digite o valor do frete: " );
         valor_frete = scan.nextInt();
        // System.out.print("Digite a data: dd/mm/aaaa ");
@@ -185,9 +179,9 @@ public class Projeto1 {
         
         NF nf = new NF();
         
-        nf.setId(id_nota);
-        nf.setId_Cliente(id_cliente);
-        nf.setValor_total(valor_total);
+        nf.setId(idNota);
+        nf.setidCliente(idCliente);
+        nf.setvalorTotal(valorTotal);
         nf.setValor_frete(valor_frete);
         nf.setDate(dataAtual);
         nf.setTime(horaAtual);
@@ -198,61 +192,61 @@ public class Projeto1 {
        
     }
       
- public static void cadastrar_NF_produto() throws SQLException{
+ public static void cadastrarNFProduto() throws SQLException{
       System.out.println("Cadastrando nota fiscal do produto: " ); 
         NF_produtoDao DAO = new NF_produtoDao();
         Scanner scan = new Scanner (System.in);
        
-        int id_NF_produto;
-        int id_nota;
-        int id_produto;
-        int qtde_vendida;
+        int idNfProduto;
+        int idNota;
+        int idproduto;
+        int qtdadeVendida;
         
 
         System.out.print("Digite o numero identificador da nota fiscal do produto: " );
-        id_NF_produto = scan.nextInt();        
+        idNfProduto = scan.nextInt();        
         System.out.print("Digite um número idendificador da nota fiscal: " );
-        id_nota = scan.nextInt();
+        idNota = scan.nextInt();
         System.out.print("Digite o numero identificador do produto: " );
-        id_produto = scan.nextInt();
+        idproduto = scan.nextInt();
         System.out.print("Digite quantos itens foram vendidos: " );
-        qtde_vendida = scan.nextInt();
+        qtdadeVendida = scan.nextInt();
         
         NF_produto nf_produto = new NF_produto();
         
-        nf_produto.setId(id_NF_produto);
-        nf_produto.setId_nota(id_nota);
-        nf_produto.setId_produto(id_produto);
-        nf_produto.setQtde(qtde_vendida);
+        nf_produto.setId(idNfProduto);
+        nf_produto.setidNota(idNota);
+        nf_produto.setidproduto(idproduto);
+        nf_produto.setQtde(qtdadeVendida);
         
        DAO.adicionar(nf_produto);
     } 
- public static void Lista_Cadastros() throws SQLException {
+ public static void listaCadastros() throws SQLException {
      System.out.println("Lista de cadastro de pessoas: " ); 
      ClienteDao DAO = new ClienteDao();
       
       DAO.imprimir();
  }
  
- public static void Lista_produto() throws SQLException{
+ public static void listaProduto() throws SQLException{
       System.out.println("Imprimir Produtos: " ); 
       ProdutoDao DAO = new ProdutoDao();
       
       DAO.imprimir();
   }
- public static void Lista_NF() throws SQLException {
+ public static void listaNF() throws SQLException {
      System.out.println("Imprimir notas fiscais: " ); 
       NFDao DAO = new NFDao();
       
       DAO.imprimir();
  }
- public static void Lista_NF_produto() throws SQLException {
+ public static void listaNFProduto() throws SQLException {
      System.out.println("Imprimir notas fiscais dos produtos: " ); 
      NF_produtoDao DAO = new NF_produtoDao();
       
       DAO.imprimir();
  }
- public static void Excluir_Cadastro(Cliente cliente) throws SQLException{
+ public static void excluirCadastro() throws SQLException{
     Scanner scan = new Scanner(System.in);
     System.out.println("Lista de cadastro de pessoas: " ); 
     ClienteDao DAO = new ClienteDao();
@@ -264,8 +258,6 @@ public class Projeto1 {
      
  }   
 
-    private static void Excluir_Cadastro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
 

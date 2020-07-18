@@ -3,46 +3,46 @@ package projeto1;
 
 
     public class Produto {
-    int id_produto;
-    String Nome_produto;
-    float valor_un;
-    int qtde_estoque;
+    int idproduto;
+    String nomeProduto;
+    float valorUn;
+    int qtdadeEstoque;
     
     public int getId() {
-        return id_produto;
+        return idproduto;
     }
 
-    public void setId(int id_produto) {
-        this.id_produto = id_produto;
+    public void setId(int idproduto) {
+        this.idproduto = idproduto;
     }
     
-    public String getNome_produto() {
-        return Nome_produto;
+    public String getnomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNome_produto(String Nome_produto) {
-        this.Nome_produto = Nome_produto;
+    public void setnomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
     
-    public float getValor_un() {
-        return valor_un;
+    public float getvalorUn() {
+        return valorUn;
     }
 
-    public void setValor_un(float valor_un) {
-        this.valor_un = valor_un;
+    public void setvalorUn(float valorUn) {
+        this.valorUn = valorUn;
     }
     
-    public int getQtde_estoque() {
-        return qtde_estoque;
+    public int getqtdadeEstoque() {
+        return qtdadeEstoque;
     }
 
-    public void setQtde_estoque(int qtde_estoque) {
-        this.qtde_estoque = qtde_estoque;
+    public void setqtdadeEstoque(int qtdadeEstoque) {
+        this.qtdadeEstoque = qtdadeEstoque;
     }
     
  @Override
     public String toString() {
-        return "Cliente{" + "id=" + id_produto + "nome produto" + Nome_produto + "valor_un=" + Float.toString(valor_un) + "qtde_estoque=" + qtde_estoque +"}";   
+        return "Cliente{" + "id=" + idproduto + "nome produto" + nomeProduto + "valorUn=" + Float.toString(valorUn) + "qtdadeEstoque=" + qtdadeEstoque +"}";   
 }
     
     

@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
     public void adicionar (Cliente cliente) throws SQLException {
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
         String sql = "INSERT INTO CLIENTE " +
-                    "(id_cliente,nome,sexo,salario) " +
+                    "(idCliente,nome,sexo,salario) " +
                     "values (?,?,?,?)";        
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ps.setInt(1, cliente.getId());
@@ -38,7 +38,7 @@ import javax.swing.JOptionPane;
         ResultSet rs = ps.executeQuery();
         
        while(rs.next()){
-            int id = rs.getInt("id_cliente");
+            int id = rs.getInt("idCliente");
             String nome = rs.getString("nome");
             String sexo = rs.getString("sexo");
             Float salario = rs.getFloat("salario");
@@ -54,7 +54,7 @@ import javax.swing.JOptionPane;
    
     public void excluir(int id) throws SQLException{
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
-        String sql = "DELETE FROM CLIENTE WHERE ID=?";
+        String sql = "DELETE FROM CLIENTE WHERE idCliente=?";
         
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ps.setInt(1, id);

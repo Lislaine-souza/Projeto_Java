@@ -3,17 +3,17 @@ package projeto1;
 
 
 public class Cliente {
-    private int id_cliente;
+    private int idCliente;
     private String nome;
     private String sexo;
     private float salario;
     
     public int getId() {
-        return id_cliente;
+        return idCliente;
     }
 
-    public void setId(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setId(int idCliente) {
+        this.idCliente = idCliente;
     }
     
     public String getNome() {
@@ -41,7 +41,7 @@ public class Cliente {
     }
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id_cliente + "nome=" + nome + "sexo=" + sexo + "salario=" + Float.toString (salario) +"}";
+        return "Cliente{" + "id=" + idCliente + "nome=" + nome + "sexo=" + sexo + "salario=" + Float.toString (salario) +"}";
   
 }
 }

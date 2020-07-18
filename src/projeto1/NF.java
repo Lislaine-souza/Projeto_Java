@@ -6,36 +6,36 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class NF {
-    int id_nota;
-    int id_cliente;
-    float valor_total;
+    int idNota;
+    int idCliente;
+    float valorTotal;
     float valor_frete;
     LocalDate data;
     LocalTime hora;
     
     
     public int getId() {
-        return id_nota;
+        return idNota;
     }
 
-    public void setId(int id_nota) {
-        this.id_nota = id_nota;
+    public void setId(int idNota) {
+        this.idNota = idNota;
     }
     
-    public int getId_Cliente() {
-        return id_cliente;
+    public int getidCliente() {
+        return idCliente;
     }
 
-    public void setId_Cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setidCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
     
-    public float getValor_total() {
-        return valor_total;
+    public float getvalorTotal() {
+        return valorTotal;
     }
 
-    public void setValor_total(float valor_total) {
-        this.valor_total = valor_total;
+    public void setvalorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
     }
     
     public float getValor_frete() {
@@ -64,8 +64,8 @@ public class NF {
     
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id_nota + "id_cliente=" + id_cliente + "valor_frete="+ Float.toString(valor_frete) + 
-                        "valor_total=" + Float.toString(valor_total)+ "Data=" + data + "hora=" + hora +"}";   
+        return "Cliente{" + "id=" + idNota + "idCliente=" + idCliente + "valor_frete="+ Float.toString(valor_frete) + 
+                        "valorTotal=" + Float.toString(valorTotal)+ "Data=" + data + "hora=" + hora +"}";   
 }
     
 }

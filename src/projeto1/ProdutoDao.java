@@ -17,13 +17,13 @@ import java.util.ArrayList;
     public void adicionar (Produto produto) throws SQLException {
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
         String sql = "INSERT INTO PRODUTO " +
-                    "(id_produto,nome_produto,valor_un,qtde_estoque) " +
+                    "(idproduto,nomeProduto,valorUn,qtdadeEstoque) " +
                     "values (?,?,?,?)";        
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ps.setInt(1, produto.getId());
-        ps.setString(2,produto.getNome_produto() );
-        ps.setFloat(3, produto.getValor_un());
-        ps.setInt(4, produto.getQtde_estoque());
+        ps.setString(2,produto.getnomeProduto() );
+        ps.setFloat(3, produto.getvalorUn());
+        ps.setInt(4, produto.getqtdadeEstoque());
         ps.execute();
         ps.close();
         conexao.close();        
@@ -37,10 +37,10 @@ import java.util.ArrayList;
         ResultSet rs = ps.executeQuery();
         
             while(rs.next()){
-            int id = rs.getInt("id_produto");
-            String nome = rs.getString("nome_produto");
-            Float valor = rs.getFloat("valor_un");
-            int qtidade = rs.getInt("qtde_estoque");
+            int id = rs.getInt("idproduto");
+            String nome = rs.getString("nomeProduto");
+            Float valor = rs.getFloat("valorUn");
+            int qtidade = rs.getInt("qtdadeEstoque");
             
                 System.out.println("ID: " + id + "\nNome: " + nome + "\nPreço: " + valor + "\nQuantidade em estoque: " 
                 +  qtidade);

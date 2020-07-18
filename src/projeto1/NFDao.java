@@ -25,12 +25,12 @@ public class NFDao implements FuncoesNFDAO {
     public void adicionar (NF nf) throws SQLException {
         this.conexao = criaConexao.estabeleceConexao(); //conecta com o BD
         String sql = "INSERT INTO NF " +
-                    "(id_nota,id_cliente,valor_total,valor_frete,data,hora) " +
+                    "(idNota,idCliente,valorTotal,valor_frete,data,hora) " +
                     "values (?,?,?,?,?,?)";        
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ps.setInt(1,nf.getId());
-        ps.setInt(2,nf.getId_Cliente());
-        ps.setFloat(3,nf.getValor_total());
+        ps.setInt(2,nf.getidCliente());
+        ps.setFloat(3,nf.getvalorTotal());
         ps.setFloat(4,nf.getValor_frete());
         ps.setObject(5, nf.getData());
         ps.setObject(6, nf.getTime());
@@ -47,15 +47,15 @@ public class NFDao implements FuncoesNFDAO {
         ResultSet rs = ps.executeQuery();
         
        while(rs.next()){
-            int id = rs.getInt("id_nota");
-            Float valor_total = rs.getFloat("valor_total");
+            int id = rs.getInt("idNota");
+            Float valorTotal = rs.getFloat("valorTotal");
             Float valor_frete = rs.getFloat("valor_frete");
-            int id_cli = rs.getInt("id_cliente");
+            int id_cli = rs.getInt("idCliente");
             Date data = rs.getDate("data");
             Time hora = rs.getTime("hora");
             
-                System.out.println(" Id_nota: " + id + " Valor_total: " + valor_total + " Valor_frete: " + valor_frete + 
-                        " Id_cliente: " + id_cli + " Data: " + data + " Hora: " + hora);
+                System.out.println(" idNota: " + id + " valorTotal: " + valorTotal + " Valor_frete: " + valor_frete + 
+                        " idCliente: " + id_cli + " Data: " + data + " Hora: " + hora);
         }
         ps.close();
         rs.close();
